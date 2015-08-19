@@ -3,7 +3,7 @@ var path = require("path");
 var Sequelize = require("sequelize");
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + '/../config/database.json')[env];
-var ip = process.env.OPENSHIFT_MYSQL_IP || "127.7.59.130" || "127.0.0.1";
+var ip = process.env.OPENSHIFT_MYSQL_IP || "127.3.134.2" || "127.0.0.1";
 var port = process.env.OPENSHIFT_MYSQL_PORT || "3306";
 var sequelize = new Sequelize(config.database, config.username, config.password, {
     host: ip,
