@@ -1,0 +1,95 @@
+﻿
+extends layout
+
+block content
+    link(rel='stylesheet', href='/stylesheets/odometer-theme-default.css')
+    script(src='/javascripts/textroller.js')
+
+    script.
+        id = #{giveaway.id};
+        username = "#{username}";
+        subbed = #{subbed};
+        following = #{following};
+        mustFollow = #{giveaway.mustFollow};
+        mustSub = #{giveaway.mustSub};
+        isopen = #{giveaway.isOpen};
+        claimTime = #{giveaway.claimTime}
+
+    .container#giveaway
+        .row.body-content
+            .well(style="width: 75%; margin: 20px auto;")
+                h1.text-center(style="margin: 0px; font-size: 28px;") #{giveaway.fromUser} is giving away #{giveaway.item} on #{giveaway.channel}'s channel.
+
+            -if(username.length > 0){
+                .col-lg-4
+                    .well#req
+                        h1.text-center(style="font-size: 24px; margin-top: 10px;") Requirements to enter
+                        p.text-center(style="font-size: 18px; position: relative;") 
+                            -if(following == "false" && giveaway.mustFollow == 1){
+                            i.fa.fa-times.fa-1x(title="You do not pass this requirement" style="color:red") 
+                            -}else{
+                            i.fa.fa-check.fa-1x(title="You pass the requirement" style="color:green;")
+                            -}
+                            | Must be following: 
+                            -if(giveaway.mustFollow == 1){
+
+                                | Yes
+                            -}else{
+                                | No
+                            -}
+                        p.text-center(style="font-size: 18px;")
+                            -if(subbed == "false" && giveaway.mustSub == 1){
+                            i.fa.fa-times.fa-1x(title="You do not pass this requirement" style="color:red") 
+                            -}else{
+                            i.fa.fa-check.fa-1x(title="You pass the requirement" style="color:green;")
+                            -}
+                            | Must be subscribed: 
+                            -if(giveaway.mustSub == 1){
+                                | Yes
+                            -}else{
+                                | No
+                            -}
+                        -if(giveaway.isOpen == "true"){
+                            -if(entered == "false"){
+                                p.text-center#success(style="display:none;") You are entered into the giveaway
+                                a.centerBtn.btn.btn-primary#enter Enter Giveaway
+                                #errors.text-center
+                            -}else{
+                                #errors.text-center You are already entered into the giveaway.
+                            -}
+                        -}else{
+                            #errors.text-center This giveaway is over.
+                        -}
+                    iframe(frameborder='0', scrolling='no', src='http://twitch.tv/chat/embed?channel='+giveaway.channel+'&popout_chat=true', height='500', width='100%')
+                .col-lg-8
+                    object#live_embed_player_flash(type='application/x-shockwave-flash', height='500', width='100%', data='http://www.twitch.tv/widgets/live_embed_player.swf?channel='+giveaway.channel+'', bgcolor='#000000')
+                        param(name='allowFullScreen', value='true')
+                        param(name='allowScriptAccess', value='always')
+                        param(name='allowNetworking', value='all')
+                        param(name='movie', value='http://www.twitch.tv/widgets/live_embed_player.swf')
+                        param(name='flashvars', value='hostname=www.twitch.tv&channel='+giveaway.channel+'&auto_play=true&start_volume=25')
+                    h3.text-center#entries(style="color:white") Entries: 
+                        span#entriesNum #{entries}
+                    .well#wheel
+                        -if(giveaway.isOpen == "true"){
+                        -if(username == giveaway.creator){
+                            div
+                                a.btn.btn-primary#roll(style="margin-left: 43%") Start Rolling
+                                #rollerror.text-center
+                                p.text-center To begin the selection process press the Start rolling button. Once the proccess begins, we will randomly select a winner from the entries and display the winner. We will also send you an email with who won the giveaway and what they won.
+                        -}else{
+                            p.text-center Standby for rolling to commence...
+                        -}
+                        -}else{
+                            p.text-center This giveaway is over, the winner was #{winner}
+                        -}
+            -}else{
+                .col-lg-8.col-lg-offset-2
+                    .well(style="margin-top: 150px;")
+                        h1.text-center(style="font-size: 24px;") Login with your twitch account to enter!
+                        a.centerBtn.btn.btn-primary.btn-lg(style="width: 200px;" href="/auth/twitch") Login
+                    .push
+            -}
+
+ block scripts
+    script(src='/javascripts/giveaway.js')

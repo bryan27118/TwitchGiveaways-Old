@@ -1,0 +1,15 @@
+﻿{
+  "development": {
+    "username": "admin",
+    "password": "22penn27",
+    "database": "twitchgiveaway",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "adminn2bvxgl",
+    "password": "xvVY-K4XYeC8",
+    "database": "chitterchat",
+    "host": "127.7.59.130",
+    "dialect": "mysql"
+  }
+}

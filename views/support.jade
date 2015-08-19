@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    .row#support
+        h1.text-center Support
+        .col-lg-6.col-lg-offset-3.col-xs-12
+            p.text-center Use this form to get in contact with us in regard to a problem you have encountered or a wish to discuss a suggestion you may have.
+
+            -if(message.length > 0){
+                .alert.alert-success= message
+            -}
+
+            form(action="/support" method="post")
+                .form-group
+                    label Your Name
+                    input.form-control(type="text" name="name" required)
+                .form-group
+                    label Message
+                    p Please provide as much detail as possible to help us better understand the issue you are having.
+                    textarea(style="width:100%; resize: none;" rows="10" name="message" required)
+                button.btn.btn-primary.btn-lg(type="submit") Send Message
+            .push

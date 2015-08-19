@@ -1,0 +1,254 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: white;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+body {
+  background-color: rgba(0,0,0,0.1);
+}
+/* Set padding to keep content from hitting the edges */
+.body-content {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+
+}
+/* styles for validation helpers */
+.field-validation-error {
+  color: #b94a48;
+}
+.field-validation-valid {
+  display: none;
+}
+input.input-validation-error {
+  border: 1px solid #b94a48;
+}
+input[type="checkbox"].input-validation-error {
+  border: 0 none;
+}
+.validation-summary-errors {
+  color: #b94a48;
+}
+.validation-summary-valid {
+  display: none;
+}
+
+.navbar{
+    border-radius: 0px;
+    margin-bottom: 0px;
+    background-color: #19191f;
+}
+
+.navbar-brand{
+    -webkit-transition: all 0.8s;
+    transition: all 0.8s;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.navbar-brand:hover{
+    transform: scale(1.2,1.2);
+}
+
+.navbar-nav{
+    margin-top: 15px;
+}
+
+.centerBtn{
+    display: block;
+    margin: 0 auto;
+    width: auto;
+}
+
+.navbar-nav li{
+    font-size: 16px;
+}
+
+.container .jumbotron{
+    width: 90%;
+    margin: 0 auto;
+    background-image: url('/images/twitch-chat.png');
+    border: 1px solid black;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-top: none;
+}
+
+.jumbotron h1{
+    text-align: center;
+    font-size: 53px;
+    font-weight: bold;
+}
+
+.jumbotron p{
+    text-align: center;
+    font-weight: bold;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+#support{
+    margin: 0px;
+}
+
+#support h1{
+    margin-top: 0px;
+    padding: 16px 0px;
+    background-color: #6441a5;
+    color: white;
+}
+
+.push{
+    height: 24em;
+}
+
+#steps{
+    margin: 0px;
+    padding: 32px 0px;
+    margin-bottom: 50px;
+}
+
+#steps h1{
+    margin-top: 0px;
+    margin-bottom: 15px;
+}
+
+.panel-default {
+    padding: 16px;
+    padding-top: 0px;
+    background-color: #6441a5;
+    color: white;
+    border-color: black;
+    -webkit-box-shadow: 10px 10px 20px -8px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 20px -8px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 20px -8px rgba(0,0,0,0.75);
+}
+
+#carousel-example-generic{
+    height: 400px;
+}
+
+#stats{
+    margin: 0px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-top: 16px;
+    height: auto;
+    background-color: #6441a5;
+}
+
+#stats span{
+    transform-origin: top center;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, 0%);
+}
+
+#stats h3{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    color: white;
+}
+
+#stats p{
+    color: white;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+#stats .fa-circle{
+    color: white;
+}
+
+#stats .fa-gift,
+#stats .fa-user,
+#stats .fa-hourglass-start{
+    color: #6441a5;
+}
+
+#setup h1{
+    margin-top: 0px;
+    padding: 32px;
+    background-color: #6441a5;
+    color: white;
+}
+
+#giveaway{
+    background-color: #6441a5;
+}
+
+.container{
+    max-width: 100%;
+    padding: 0px;
+}
+
+#giveaway .row > h1{
+    margin-top: 20px;
+    padding: 32px;
+    color: white;
+}
+
+#success{
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#errors{
+    color: red;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-primary{
+    background-color: #6441a5;
+    border-color: black;
+}
+
+.btn-primary:hover{
+    background-color: #8E6EC9;
+    border-color: black;
+}
+
+#rollerror{
+    margin-left: auto;
+    margin-right: auto;
+    background-color: tomato;
+    color: white;
+    border-radius: 6px;
+    width: 250px;
+}
+
+footer{
+    background-color: #19191f;
+    color: white;
+    height: 100px;
+}
+
+footer p{
+    padding-top: 40px;
+    margin-bottom: 0px;
+}

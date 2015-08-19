@@ -1,0 +1,56 @@
+﻿
+extends layout
+
+block content
+    .row#setup
+        h1.text-center Create A Giveaway
+        .col-lg-4.col-lg-offset-4
+            form(action="/create" method="post")
+                .form-group
+                    label What is being given away?
+                    p Enter the name of the item.
+                    input.form-control(type="text" name="item" maxlength="32" required)
+                .form-group
+                    label Are you giving this item away?
+                    p Who has provided the item?
+                    input#yes(type="radio" name="from" value="1" checked )
+                    | Yes  
+                    input#no(type="radio" name="from" value="0")
+                    |  No
+                    span#fromname(style="display:none;")
+                        p Enter the name of the person who provided the item.
+                        input.form-control(type="text" name="fromName" maxlength="32")
+                .form-group
+                    label What Twitch Channel is this being given away on?
+                    p Enter a username.
+                    input.form-control(type="text" name="channel" maxlength="32" required)
+
+                .form-group
+                    label Requirements to Enter
+                    .checkbox
+                        input(type="checkbox" name="following" value="1")
+                        | Following
+                    .checkbox
+                        input(type="checkbox" name="subscribe" value="1")
+                        | Subscribed
+                .form-group
+                    label Do you want us to email you once the giveaway is over?
+                    p We will email you the name of the winner and what they won. (Your email on twitch must be verified)
+                    input(type="radio" name="emailMe" value="1" checked )
+                    | Yes  
+                    input(type="radio" name="emailMe" value="0")
+                    |  No
+                .form-group
+                    label Does the winner have to claim the prize?
+                    p Use this to verify the winner is currently present.
+                    input#yesClaim(type="radio" name="claim" value="1" checked )
+                    | Yes  
+                    input#noClaim(type="radio" name="claim" value="0")
+                    |  No
+                    span#claimTime(style="display:block;")
+                        p Enter the amount of time in seconds the winner has to claim.
+                        input.form-control(type="number" name="claimTime" value="30" min="30" max="9000")
+                button.centerBtn.btn.btn-primary.btn-lg(type="submit") Create
+
+ block scripts
+    script(src='/javascripts/create.js')

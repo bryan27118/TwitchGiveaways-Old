@@ -1,0 +1,50 @@
+﻿extends layout
+
+block content
+    .jumbotron
+        h1 Time to end spam!
+        p.lead The goal of TwitchGiveaways is to take the chat spam out of the giveaway process and provide an easy to setup enviroment to hold your giveaways at. Follow the 3 easy steps below to get started!
+    .row#steps.body-content
+        h1.text-center Setup a giveaway in 3 easy steps.
+        .col-md-3.panel.panel-default.col-md-offset-1(style="margin-right: 15px;")
+            h2.text-center Step 1: Login
+            p.text-center Login through your twitch account.
+            p
+            -if(username.length > 0){
+                .well.text-center(style="margin-bottom: 0px;padding: 8px;")
+                    i.fa.fa-check(style="color:green")  Logged in as #{username}
+            -}else{
+                a.centerBtn.btn.btn-default(href='/auth/twitch') Login &raquo;
+            -}
+        .col-md-3.panel.panel-default(style="margin-right: 15px;")
+            h2.text-center Step 2: Configure
+            p.text-center Provide the details and settings for the giveaway.
+            p
+            -if(username.length > 0){
+                a.centerBtn.centerBtn.btn.btn-default(href='/create') Create &raquo;
+            -}
+        .col-md-3.panel.panel-default
+            h2.text-center Step 3: Share
+            p.text-center Paste the link to the giveaway in your chat and viewers can enter by clicking on the link and signing in with their twitch account.
+    .row#stats.body-content
+        .col-md-4
+            span.fa-stack.fa-4x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-gift.fa-stack-1x
+            h3.text-center Giveaways held
+            p.text-center #{giveaways}
+        .col-md-4
+            span.fa-stack.fa-4x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-user.fa-stack-1x
+            h3.text-center Users Entered
+            p.text-center #{users}
+        .col-md-4
+            span.fa-stack.fa-4x
+                i.fa.fa-circle.fa-stack-2x
+                i.fa.fa-hourglass-start.fa-stack-1x
+            h3.text-center Active Giveaways
+            p.text-center #{open}
+
+ block scripts
+    script(src='/javascripts/home.js')

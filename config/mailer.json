@@ -1,0 +1,12 @@
+﻿{
+  "development": {
+    "service": "Gmail",
+    "username": "specscape1@gmail.com",
+    "password": "22penn27"
+  },
+  "production": {
+    "service": "Gmail",
+    "username": "specscape1@gmail.com",
+    "password": "22penn27"
+  }
+}
