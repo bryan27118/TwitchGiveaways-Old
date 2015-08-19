@@ -6,10 +6,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "adminn2bvxgl",
-    "password": "xvVY-K4XYeC8",
-    "database": "chitterchat",
-    "host": "127.7.59.130",
+    "username": "adminpZhET9U",
+    "password": "Jldj2gyVDYFq",
+    "database": "twitchgiveaways",
+    "host": "127.3.134.2",
     "dialect": "mysql"
   }
 }
