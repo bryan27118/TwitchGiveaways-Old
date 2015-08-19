@@ -36,7 +36,7 @@ module.exports = function (passport) {
     passport.use(new TwitchStrategy({
         clientID: TWITCH_CLIENT_ID,
         clientSecret: TWITCH_CLIENT_SECRET,
-        callbackURL: "http://localhost:1337/auth/twitch/callback",
+        callbackURL: "http://www.twitch-giveaways.com/auth/twitch/callback",
         passReqToCallback : true
     },
     function (req, accessToken, refreshToken, profile, done) {
