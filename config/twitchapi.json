@@ -1,0 +1,13 @@
+﻿{
+  "development": {
+	"id": "r2xsltbfhmrnh14rs0pzvr48jviikoq",
+    "secret": "ijkvgjul0vz3546jhg3ititsjogiwqr",
+    "callback": "http://localhost:8080/auth/twitch/callback"
+
+  },
+  "production": {
+    "id": "sube989ttm2hli2jcb34brkh5wq3zdc",
+    "secret": "nhkwmdhwpcaevw54rxvd4j1x3upsmk",
+    "callback": "http://www.twitch-giveaways.com/auth/twitch/callback"
+  }
+}

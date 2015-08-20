@@ -4,8 +4,11 @@ var models = require('../models');
 
 var TwitchStrategy = require("passport-twitch").Strategy;
 
-var TWITCH_CLIENT_ID = "sube989ttm2hli2jcb34brkh5wq3zdc";
-var TWITCH_CLIENT_SECRET = "nhkwmdhwpcaevw54rxvd4j1x3upsmk";
+var env = process.env.NODE_ENV || "development";
+var config = require(__dirname + '/twitchapi.json')[env];
+
+var TWITCH_CLIENT_ID = config.id;
+var TWITCH_CLIENT_SECRET = config.secret;
 
 // expose this function to our app using module.exports
 module.exports = function (passport) {
@@ -36,7 +39,7 @@ module.exports = function (passport) {
     passport.use(new TwitchStrategy({
         clientID: TWITCH_CLIENT_ID,
         clientSecret: TWITCH_CLIENT_SECRET,
-        callbackURL: "http://www.twitch-giveaways.com/auth/twitch/callback",
+        callbackURL: config.callback,
         passReqToCallback : true
     },
     function (req, accessToken, refreshToken, profile, done) {

@@ -3,6 +3,7 @@ var async = require('async');
 var nodemailer = require('nodemailer');
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + '/../config/mailer.json')[env];
+var globalInterval = null;
 
 var transporter = nodemailer.createTransport({
     service: config.service,
@@ -159,7 +160,7 @@ module.exports = function (app,passport) {
                 
                 //TODO Send EMAIL
                 models.User.find({ where: { username: giveaway.creator } }).then(function (user) {
-                    if (user.email != null) {
+                    if (user.email != null && giveaway.emailMe == 1) {
                         var mailOptions = {
                             from: 'Twitch-Giveaways.com <mailer@Twitch-Giveaways.com>', // sender address
                             to: user.email, // list of receivers
@@ -205,7 +206,7 @@ module.exports = function (app,passport) {
                     } else {
                         var name = giveaway.winner.substring(giveaway.winner.indexOf('/')+1, giveaway.winner.length);
                         models.User.find({ where: { username: giveaway.creator } }).then(function (user) {
-                            if (user.email != null) {
+                            if (user.email != null && giveaway.emailMe == 1) {
                                 var mailOptions = {
                                     from: 'Twitch-Giveaways.com <mailer@TwitchGiveaways.com>', // sender address
                                     to: user.email, // list of receivers
@@ -225,6 +226,7 @@ module.exports = function (app,passport) {
                         clearInterval(myInterval);
                     }
                 }, (giveaway.claimTime + 15) * 1000);
+                globalInterval = myInterval;
             }
 
         });
@@ -258,8 +260,8 @@ module.exports = function (app,passport) {
                         });
                     }
                 });
-
                 res.send("claimed " + req.user.username);
+                clearInterval(globalInterval);
             } else {
                 res.send("failed");
             }
