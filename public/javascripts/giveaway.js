@@ -107,7 +107,7 @@ var ajax = function() {
                 if (winnerLastTick != realname) {
                     if(winnerLastTick != ""){
                         $("#wheel").empty();
-                        $("#wheel").append("<h1 style='margin-bottom: 0px;' class='text-center'>" + winnerLastTick + " failed to claim, rerolling.</h1>");
+                        $("#wheel").append("<p style='margin-bottom: 0px;' class='text-center'>" + winnerLastTick + " failed to claim, rerolling.</p>");
                     }
                     winnerLastTick = realname;
                     winnerDisplayed = false;

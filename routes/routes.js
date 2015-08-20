@@ -357,13 +357,13 @@ module.exports = function (app,passport) {
         var mustSub = req.body.subscribe || 0;
         var uniLink = guid();
 
-        var from = req.user.username;
+        var fromUsername = req.user.username;
         
         if (from == 0) {
-            from = fromName;
+            fromUsername = fromName;
         }
 
-        models.Giveaway.create({ item: item, channel: channel, emailMe: emailMe, claimTime: claimTime, mustClaim: claim, uniLink: uniLink, creator: req.user.username, fromUser: fromName, mustFollow: mustFollow, mustSub: mustSub }).then(function (giveaway) {
+        models.Giveaway.create({ item: item, channel: channel, emailMe: emailMe, claimTime: claimTime, mustClaim: claim, uniLink: uniLink, creator: req.user.username, fromUser: fromUsername, mustFollow: mustFollow, mustSub: mustSub }).then(function (giveaway) {
             res.redirect('/ga/' + giveaway.uniLink);
         });
     });

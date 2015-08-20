@@ -47,5 +47,5 @@ require('./routes/routes.js')(app,passport); // load our routes and pass in our 
 
 
 http.createServer(app).listen(port, ipaddress, function () {
-    console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port ' + port);
 });
