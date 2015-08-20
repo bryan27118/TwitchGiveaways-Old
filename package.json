@@ -17,6 +17,7 @@
     "nodemailer": "^1.4.0",
     "passport": "^0.2.2",
     "passport-twitch": "^1.0.1",
-    "sequelize": "^3.5.1"
+    "sequelize": "^3.5.1",
+    "sitemap": "^1.0.0"
   }
 }

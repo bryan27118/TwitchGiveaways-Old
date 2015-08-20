@@ -4,6 +4,7 @@ var nodemailer = require('nodemailer');
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + '/../config/mailer.json')[env];
 var globalInterval = null;
+var sm = require('sitemap');
 
 var transporter = nodemailer.createTransport({
     service: config.service,
@@ -269,18 +270,6 @@ module.exports = function (app,passport) {
 
     });
     
-    app.get('/claimfail/:id', ensureAuthenticated, function (req, res) {
-        var giveawayId = req.params.id;
-        
-        models.Giveaway.findById(giveawayId).then(function (giveaway) {
-            var claim = giveaway.claimFail();
-            giveaway.save();
-            console.log("failed claim: " + claim);
-            res.send("claim failed");
-        });
-
-    });
-    
     app.get('/update/:id', ensureAuthenticated, function (req, res) {
         var giveawayId = req.params.id;
         
@@ -300,6 +289,29 @@ module.exports = function (app,passport) {
             }
         });
 
+    });
+    
+    //robots.txt
+    app.get('/robots.txt', function (req, res) {
+        res.type('text/plain');
+        res.send("User-agent: *");
+    });
+    
+    //sitemap
+    app.get('/sitemap.xml', function (req, res) {
+        
+        var sitemap = sm.createSitemap({
+            hostname: 'http://www.twitch-giveaways.com',
+            cacheTime: 600000,  // 600 sec cache period 
+            urls: [
+                { url: '/', changefreq: 'daily', priority: 0.3 },
+                { url: '/about', changefreq: 'weekly', priority: 0.7 },
+                { url: '/support', changefreq: 'weekly', priority: 0.7 },
+            ]
+        });
+        res.header('Content-Type', 'application/xml');
+        res.send(sitemap.toString());
+        
     });
 
     app.get('/enter/:id', ensureAuthenticated, function (req, res) {
