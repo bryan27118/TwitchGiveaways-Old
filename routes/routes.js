@@ -160,7 +160,7 @@ module.exports = function (app,passport) {
                 
                 //TODO Send EMAIL
                 models.User.find({ where: { username: giveaway.creator } }).then(function (user) {
-                    if (user.email != null && giveaway.emailMe == 1) {
+                    if (user.email != "" && giveaway.emailMe == 1) {
                         var mailOptions = {
                             from: 'Twitch-Giveaways.com <mailer@Twitch-Giveaways.com>', // sender address
                             to: user.email, // list of receivers
@@ -178,7 +178,7 @@ module.exports = function (app,passport) {
                 });
                 
                 models.User.find({ where: { username: giveaway.winner } }).then(function (user) {
-                    if (user.email != null) {
+                    if (user.email != "") {
                         var mailOptions = {
                             from: 'Twitch-Giveaways.com <mailer@TwitchGiveaways.com>', // sender address
                             to: user.email, // list of receivers
@@ -206,7 +206,7 @@ module.exports = function (app,passport) {
                     } else {
                         var name = giveaway.winner.substring(giveaway.winner.indexOf('/')+1, giveaway.winner.length);
                         models.User.find({ where: { username: giveaway.creator } }).then(function (user) {
-                            if (user.email != null && giveaway.emailMe == 1) {
+                            if (user.email != "" && giveaway.emailMe == 1) {
                                 var mailOptions = {
                                     from: 'Twitch-Giveaways.com <mailer@TwitchGiveaways.com>', // sender address
                                     to: user.email, // list of receivers
@@ -244,7 +244,7 @@ module.exports = function (app,passport) {
                 
                 //TODO Send EMAIL
                 models.User.find({ where: { username: req.user.username } }).then(function (user) {
-                    if (user.email != null) {
+                    if (user.email != "") {
                         var mailOptions = {
                             from: 'Twitch-Giveaways.com<mailer@Twitch-Giveaways.com>', // sender address
                             to: user.email, // list of receivers

@@ -51,7 +51,6 @@ $(document).on('click', '#claim', function () {
             claimed = true;
             var user = data.substring(data.indexOf("claimed"), data.length);
             $("#wheel").empty();
-            $("#wheel").append("<h1 style='margin-top: 0px;' class='text-center'>" + user + " has claimed the prize!</h1>");
         }
     });
 });
@@ -105,8 +104,8 @@ var ajax = function() {
             if (winner.indexOf("UNCLAIMED/") >= 0) {
                 var realname = winner.substring(winner.indexOf("/") + 1, winner.length);
                 if (winnerLastTick != realname) {
+                    $("#wheel").empty();
                     if(winnerLastTick != ""){
-                        $("#wheel").empty();
                         $("#wheel").append("<p style='margin-bottom: 0px;' class='text-center'>" + winnerLastTick + " failed to claim, rerolling.</p>");
                     }
                     winnerLastTick = realname;
@@ -148,6 +147,7 @@ var ajax = function() {
                 $("#wheel").append("<h1 style='margin-top: 0px;' class='text-center'>" + realname + " has claimed the prize!</h1>");
             } else {
                 if (winnerDisplayed == false) {
+                    $("#wheel").empty();
                     $("#wheel").append("<h1 style='margin-bottom: 0px;' class='text-center'>And the winner is</h1>");
                     $("#wheel").append("<h1 style='width: 100%;margin-top: 0px;' id='roller' class='text-center textroller'></h1>");
                     var elt = document.getElementById("roller");
