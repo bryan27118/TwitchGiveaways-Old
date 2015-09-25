@@ -5,3 +5,7 @@ ExpressApp2.v12.suo
 /node_modules/*
 /README.md
 /node_modules/
+/config/
+TwitchGiveaways.njsproj
+TwitchGiveaways.sln
+TwitchGiveaways.v12.suo
